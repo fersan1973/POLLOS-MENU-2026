@@ -6,252 +6,625 @@
   <title>Pollos Asados El Rey Del Carbón | Menú Digital</title>
   <style>
     :root {
-      --bg: #120d0a;
-      --card: #1d1510;
-      --gold: #f5b942;
-      --ember: #e85d04;
-      --text: #fff8f0;
-      --muted: #c9b8a8;
-      --border: #3a281d;
+      --bg: #0c0a09;
+      --surface: #171412;
+      --surface-border: #2a2420;
+      --red: #c81d11;
+      --red-dark: #8c1109;
+      --gold: #facc15;
+      --gold-dark: #eab308;
+      --text: #ffffff;
+      --muted: #b8b0a8;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
       color: var(--text);
-      line-height: 1.5;
-      padding-bottom: 40px;
+      line-height: 1.45;
+      padding-bottom: 48px;
     }
-    header {
-      background: linear-gradient(135deg, #2b1409 0%, #120d0a 100%);
-      border-bottom: 2px solid var(--gold);
+
+    /* HERO HEADER */
+    .hero {
+      background: radial-gradient(circle at top, #3b100c 0%, #140b09 65%, #0c0a09 100%);
       text-align: center;
       padding: 28px 16px 22px;
+      border-bottom: 3px solid var(--gold);
     }
-    .badge {
-      display: inline-block;
-      background: var(--ember);
-      color: #fff;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      padding: 4px 12px;
-      border-radius: 999px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
+    .logo-wrap {
+      width: 144px;
+      height: 144px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
     }
-    h1 {
-      font-size: 1.85rem;
+    .hero h1 {
+      font-family: Impact, "Arial Black", "Segoe UI", sans-serif;
+      font-size: 2.05rem;
+      line-height: 1.08;
       color: var(--gold);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+      margin-bottom: 8px;
+    }
+    .hero-sub {
+      font-weight: 800;
+      font-size: 0.92rem;
+      letter-spacing: 1.5px;
+      color: #ffffff;
+      margin-bottom: 18px;
+    }
+    .cta-primary {
+      display: block;
+      max-width: 440px;
+      margin: 0 auto 10px;
+      background: linear-gradient(180deg, #dc2626 0%, #b91c1c 100%);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 1.05rem;
       letter-spacing: 0.5px;
-      margin-bottom: 6px;
+      padding: 14px 18px;
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4);
     }
-    .subtitle {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-    .info-bar {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+    .cta-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 10px;
-      margin-top: 16px;
+      max-width: 440px;
+      margin: 0 auto;
     }
-    .btn {
-      display: inline-block;
-      padding: 10px 16px;
-      border-radius: 8px;
+    .cta-gold {
+      background: var(--gold);
+      color: #111111;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 0.85rem;
+      padding: 12px 10px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: 1.2;
+    }
+    .cta-dark {
+      background: #1f1b18;
+      color: var(--gold);
+      border: 1.5px solid #443c35;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 12px 10px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    /* INFO BAR */
+    .info-strip {
+      background: #13100e;
+      text-align: center;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--surface-border);
+      font-size: 0.86rem;
+    }
+    .info-strip .gold { color: var(--gold); font-weight: 700; }
+    .info-strip a { color: #ffffff; text-decoration: underline; }
+    .info-strip p + p { margin-top: 6px; }
+
+    /* STICKY PILL NAV */
+    .nav-pills {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(12, 10, 9, 0.96);
+      backdrop-filter: blur(6px);
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--surface-border);
+      scrollbar-width: none;
+    }
+    .nav-pills::-webkit-scrollbar { display: none; }
+    .pill {
+      flex: 0 0 auto;
+      background: #1e1a17;
+      border: 1px solid #352f2a;
+      color: #ffffff;
       text-decoration: none;
       font-weight: 700;
-      font-size: 0.9rem;
-      cursor: pointer;
-      border: none;
+      font-size: 0.85rem;
+      padding: 8px 14px;
+      border-radius: 999px;
+      white-space: nowrap;
     }
-    .btn-call { background: var(--gold); color: #120d0a; }
-    .btn-map { background: #2d2018; color: var(--text); border: 1px solid var(--border); }
+    .pill:hover, .pill:active {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* MAIN CONTAINER & BANNERS */
     main {
-      max-width: 720px;
+      max-width: 680px;
       margin: 0 auto;
-      padding: 20px 16px;
+      padding: 8px 14px 20px;
     }
-    .hours {
-      text-align: center;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 10px;
-      font-size: 0.9rem;
-      color: var(--gold);
-      margin-bottom: 22px;
+    .section-banner {
+      margin-top: 24px;
+      margin-bottom: 12px;
+      background: linear-gradient(90deg, #dc2626 0%, #8c1109 100%);
+      border-left: 6px solid var(--gold);
+      border-radius: 8px;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      scroll-margin-top: 64px;
     }
-    h2 {
-      color: var(--gold);
-      font-size: 1.25rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 6px;
-      margin: 24px 0 12px;
+    .section-banner h2 {
+      font-family: Impact, "Arial Black", sans-serif;
+      font-size: 1.35rem;
+      letter-spacing: 0.6px;
       text-transform: uppercase;
-      letter-spacing: 0.8px;
+      color: #ffffff;
     }
-    .item {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px;
+    .section-banner span {
+      font-weight: 800;
+      font-size: 0.78rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #fde68a;
+      white-space: nowrap;
+    }
+    .section-note {
+      color: var(--gold);
+      font-style: italic;
+      font-size: 0.86rem;
+      margin: -4px 2px 12px;
+    }
+
+    /* MENU CARDS */
+    .menu-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 12px;
+      padding: 15px 16px;
       margin-bottom: 10px;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 12px;
+      gap: 14px;
     }
-    .item-title { font-weight: 700; font-size: 1.05rem; color: #fff; }
-    .item-desc { font-size: 0.88rem; color: var(--muted); margin-top: 3px; }
-    .price { font-weight: 800; color: var(--gold); font-size: 1.05rem; white-space: nowrap; }
-    .qr-section {
-      margin-top: 34px;
-      background: var(--card);
-      border: 1px solid var(--gold);
+    .menu-title {
+      font-weight: 900;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      color: #ffffff;
+      letter-spacing: 0.3px;
+    }
+    .menu-en {
+      font-weight: 800;
+      font-size: 0.84rem;
+      color: var(--gold);
+      margin-top: 2px;
+    }
+    .menu-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+    .price-pill {
+      background: #110e0c;
+      border: 1px solid #3a3128;
+      color: var(--gold);
+      font-weight: 900;
+      font-size: 1.05rem;
+      padding: 7px 12px;
+      border-radius: 8px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* QR & PRINT SECTION */
+    .qr-card {
+      margin-top: 32px;
+      background: var(--surface);
+      border: 1.5px solid var(--gold);
       border-radius: 14px;
-      padding: 20px;
+      padding: 22px 16px;
       text-align: center;
     }
-    .qr-section h3 { color: var(--gold); margin-bottom: 6px; }
-    .qr-section p { color: var(--muted); font-size: 0.88rem; margin-bottom: 14px; }
-    #qr-box img {
-      background: #fff;
+    .qr-card h3 {
+      color: var(--gold);
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+    }
+    .qr-card p {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-bottom: 14px;
+    }
+    #qr-img {
+      background: #ffffff;
       padding: 12px;
       border-radius: 10px;
-      margin: 10px auto;
       display: block;
+      margin: 0 auto 14px;
     }
-    .qr-actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+    .qr-btns {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn-qr {
+      background: var(--gold);
+      color: #111111;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.88rem;
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-print {
+      background: #26201c;
+      color: #ffffff;
+      border: 1px solid #443c35;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
     footer {
       text-align: center;
       color: var(--muted);
       font-size: 0.82rem;
-      margin-top: 28px;
+      margin-top: 26px;
       padding: 0 16px;
     }
+
     @media print {
       body { background: #fff; color: #000; }
-      header, main > :not(.qr-section), footer { display: none !important; }
-      .qr-section { border: 2px solid #000; background: #fff; color: #000; }
-      .qr-section h3, .qr-section p { color: #000; }
-      .qr-actions { display: none; }
+      .hero, .info-strip, .nav-pills, main > :not(.qr-card), footer { display: none !important; }
+      .qr-card { border: 2px solid #000; background: #fff; color: #000; }
+      .qr-card h3, .qr-card p { color: #000; }
+      .qr-btns { display: none; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="badge">Auténtico Sabor Regio al Carbón</div>
+
+  <header class="hero">
+    <div class="logo-wrap">
+      <!-- Crest Logo SVG -->
+      <svg viewBox="0 0 220 220" width="144" height="144" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="110" cy="110" r="106" fill="#181210" stroke="#facc15" stroke-width="5"/>
+        <circle cx="110" cy="110" r="98" fill="#c81d11"/>
+        <circle cx="110" cy="110" r="64" fill="#facc15" stroke="#181210" stroke-width="4"/>
+        <defs>
+          <path id="topArc" d="M 32,110 A 78,78 0 1,1 188,110" />
+          <path id="botArc" d="M 188,112 A 78,78 0 1,1 32,112" />
+        </defs>
+        <text fill="#facc15" font-family="Impact, Arial Black, sans-serif" font-size="18" letter-spacing="1.5">
+          <textPath href="#topArc" startOffset="50%" text-anchor="middle">POLLOS ASADOS</textPath>
+        </text>
+        <text fill="#facc15" font-family="Impact, Arial Black, sans-serif" font-size="16.5" letter-spacing="1.2">
+          <textPath href="#botArc" startOffset="50%" text-anchor="middle">EL REY DEL CARBÓN</textPath>
+        </text>
+        <!-- Stylized Rooster Emblem -->
+        <g transform="translate(62,56)" stroke="#181210" stroke-width="3.5" stroke-linejoin="round">
+          <path d="M36,22 C34,12 42,8 46,15 C50,8 58,10 56,18 C62,15 66,22 60,26 Z" fill="#dc2626"/>
+          <path d="M32,44 C26,34 34,22 48,22 C60,22 66,32 62,44 C72,48 76,62 68,74 C58,84 36,84 28,72 C22,62 24,50 32,44 Z" fill="#facc15"/>
+          <polygon points="28,34 15,38 28,43" fill="#f97316"/>
+          <circle cx="38" cy="34" r="3" fill="#181210"/>
+          <path d="M36,54 C46,50 58,52 64,60 C56,66 44,66 36,54 Z" fill="#f59e0b"/>
+          <path d="M68,52 C78,44 86,50 78,60 C86,62 82,72 72,68 Z" fill="#dc2626"/>
+        </g>
+      </svg>
+    </div>
+
     <h1>Pollos Asados El Rey Del Carbón</h1>
-    <p class="subtitle">2431 Basse Rd, San Antonio, TX 78213</p>
-    <div class="info-bar">
-      <a class="btn btn-call" href="tel:+12109437490">📞 Llamar: (210) 943-7490</a>
-      <a class="btn btn-map" href="https://maps.google.com/?q=2431+Basse+Rd,+San+Antonio,+TX+78213" target="_blank" rel="noopener">📍 Cómo Llegar</a>
+    <div class="hero-sub">MENÚ DIGITAL • DIGITAL MENU</div>
+
+    <a class="cta-primary" href="tel:+12109437490">📞 ORDENAR AHORA: (210) 943-7490</a>
+    <div class="cta-row">
+      <a class="cta-gold" href="tel:+12109437490">🔥 BANQUETES /<br>CATERING</a>
+      <a class="cta-dark" href="mailto:Fersan17@gmail.com?subject=Orden%20o%20Consulta%20-%20Pollos%20Asados%20El%20Rey">✉️ CORREO DIRECTO</a>
     </div>
   </header>
 
+  <div class="info-strip">
+    <p>📍 <span class="gold">2431 Basse Rd, San Antonio, TX 78213</span> | 🕒 <span class="gold">Todos los días:</span> 11:00 AM – 10:00 PM</p>
+    <p>✉️ Quejas, órdenes o info: <a href="mailto:Fersan17@gmail.com">Fersan17@gmail.com</a> · <a href="https://maps.google.com/?q=2431+Basse+Rd,+San+Antonio,+TX+78213" target="_blank" rel="noopener">Ver Mapa</a></p>
+  </div>
+
+  <nav class="nav-pills" aria-label="Categorías del menú">
+    <a class="pill" href="#parrilladas">🔥 Parrilladas</a>
+    <a class="pill" href="#pollito">🍗 Pollito y Carnita</a>
+    <a class="pill" href="#paquetes">🌮 Paquetes Personales</a>
+    <a class="pill" href="#hamburguesas">🍔 Hamburguesas</a>
+    <a class="pill" href="#bebidas">🥤 Bebidas</a>
+  </nav>
+
   <main>
-    <div class="hours">🔥 Abierto Todos los Días: 11:00 AM – 10:00 PM</div>
-
-    <h2>Especialidades al Carbón</h2>
-    <div class="item">
-      <div>
-        <div class="item-title">Pollo Entero Asado al Carbón</div>
-        <div class="item-desc">Pollo entero marinado al estilo Monterrey, asado lentamente al carbón. Incluye tortillas, cebolla asada, jalapeños y salsa de la casa.</div>
-      </div>
-      <div class="price">$16.99</div>
-    </div>
-    <div class="item">
-      <div>
-        <div class="item-title">Medio Pollo Asado al Carbón</div>
-        <div class="item-desc">Medio pollo jugoso al carbón acompañado de arroz, frijoles charros, tortillas, cebolla asada y salsa.</div>
-      </div>
-      <div class="price">$10.99</div>
-    </div>
-    <div class="item">
-      <div>
-        <div class="item-title">Paquete Familiar El Rey (2 Pollos)</div>
-        <div class="item-desc">2 pollos enteros al carbón, 2 órdenes grandes de arroz, 2 órdenes grandes de frijoles charros, tortillas, cebollas asadas y salsas.</div>
-      </div>
-      <div class="price">$34.99</div>
+    <!-- PARRILLADAS -->
+    <div id="parrilladas" class="section-banner">
+      <h2>Parrilladas</h2>
+      <span>Family Platter</span>
     </div>
 
-    <h2>Cortes y Antojitos</h2>
-    <div class="item">
+    <div class="menu-card">
       <div>
-        <div class="item-title">Costillas de Puerco al Carbón</div>
-        <div class="item-desc">Costillas sazonadas y doradas a las brasas con guarniciones tradicionales.</div>
+        <div class="menu-title">Family Meal #1</div>
+        <div class="menu-desc">8 piezas de pollito asado, 1 lb de carnita asada a tu elección (Fajita, Ribeye o Costillita), 1 salchicha, 2 frijoles charros, arroz, tortillas de maíz, cebolla asada, chilito toreado y salsa.</div>
       </div>
-      <div class="price">$15.99</div>
-    </div>
-    <div class="item">
-      <div>
-        <div class="item-title">Salchicha Asada (Orden)</div>
-        <div class="item-desc">Salchicha estilo regio asada al carbón con tortillas y salsa.</div>
-      </div>
-      <div class="price">$6.99</div>
-    </div>
-    <div class="item">
-      <div>
-        <div class="item-title">Papa Asada Especial</div>
-        <div class="item-desc">Papa grande al carbón con mantequilla, queso fundido, crema y carne asada o pollo deshebrado.</div>
-      </div>
-      <div class="price">$9.99</div>
+      <div class="price-pill">$50.99 / $55.98</div>
     </div>
 
-    <h2>Complementos y Aguas Frescas</h2>
-    <div class="item">
+    <div class="menu-card">
       <div>
-        <div class="item-title">Frijoles Charros (16 oz)</div>
-        <div class="item-desc">Preparados al estilo tradicional con tocino, salchicha y cilantro.</div>
+        <div class="menu-title">Family Meal #2</div>
+        <div class="menu-desc">4 piezas de pollito asado, 1/2 lb de carnita asada a tu elección (Fajita, Ribeye o Costillita), 1 frijoles charros, 1 arroz, tortillas de maíz, cebolla asada, chilito toreado y salsa.</div>
       </div>
-      <div class="price">$4.50</div>
-    </div>
-    <div class="item">
-      <div>
-        <div class="item-title">Arroz Rojo Casero (16 oz)</div>
-        <div class="item-desc">Arroz esponjoso sazonado con tomate y especias.</div>
-      </div>
-      <div class="price">$3.99</div>
-    </div>
-    <div class="item">
-      <div>
-        <div class="item-title">Aguas Frescas Naturales (32 oz)</div>
-        <div class="item-desc">Horchata, Jamaica, Tamarindo o Limón con Chía preparadas al día.</div>
-      </div>
-      <div class="price">$4.25</div>
+      <div class="price-pill">$29.99 / $34.98</div>
     </div>
 
-    <section class="qr-section">
+    <!-- POLLITO Y CARNITA ASADA -->
+    <div id="pollito" class="section-banner">
+      <h2>Pollito y Carnita Asada</h2>
+      <span>Al Carbón</span>
+    </div>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">Pollo Entero Al Carbón</div>
+        <div class="menu-desc">8 piezas de pollo marinado al estilo Monterrey. Incluye arroz, frijoles charros, cebolla asada, chilito toreado, tortillas y salsa.</div>
+      </div>
+      <div class="price-pill">$17.99</div>
+    </div>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">Medio Pollo Al Carbón</div>
+        <div class="menu-desc">4 piezas de pollo asado al carbón. Incluye arroz, frijoles charros, cebolla asada, chilito toreado, tortillas y salsa.</div>
+      </div>
+      <div class="price-pill">$11.99</div>
+    </div>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">1 Lb. Fajita Asada</div>
+        <div class="menu-desc">Incluye cebolla asada, chilito toreado, tortillas y salsa.</div>
+      </div>
+      <div class="price-pill">$23.99</div>
+    </div>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">1 Lb. Ribeye Asado</div>
+        <div class="menu-desc">Incluye cebolla asada, chilito toreado, tortillas y salsa.</div>
+      </div>
+      <div class="price-pill">$25.99</div>
+    </div>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">1 Lb. Costillita Asada</div>
+        <div class="menu-desc">Incluye cebolla asada, chilito toreado, tortillas y salsa.</div>
+      </div>
+      <div class="price-pill">$27.99</div>
+    </div>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">Caprichos (4)</div>
+        <div class="menu-desc">4 piezas preparadas al carbón con queso y salsa de la casa.</div>
+      </div>
+      <div class="price-pill">$13.99</div>
+    </div>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">Papa Asada</div>
+        <div class="menu-desc">Incluye fajita, mantequilla, crema, jalapeño y galleta salada.</div>
+      </div>
+      <div class="price-pill">$16.99</div>
+    </div>
+
+    <!-- PAQUETES PERSONALES -->
+    <div id="paquetes" class="section-banner">
+      <h2>Paquetes Personales</h2>
+      <span>Individual Combos</span>
+    </div>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">1/2 De Fajita</div>
+        <div class="menu-desc">Incluye salchicha, cebolla asada, tortillas y salsa.</div>
+      </div>
+      <div class="price-pill">$14.99</div>
+    </div>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">1/2 De Ribeye</div>
+        <div class="menu-desc">Incluye salchicha, cebolla asada, tortillas y salsa.</div>
+      </div>
+      <div class="price-pill">$15.99</div>
+    </div>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">1/2 Costilla</div>
+        <div class="menu-desc">Incluye salchicha, cebolla asada, tortillas y salsa.</div>
+      </div>
+      <div class="price-pill">$16.99</div>
+    </div>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">Plato De La Casa</div>
+        <div class="menu-desc">Incluye salchicha, 2 quesadillas de maíz, carne y guacamole.</div>
+      </div>
+      <div class="price-pill">$18.99</div>
+    </div>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">Taco Norteño (1)</div>
+        <div class="menu-desc">Incluye fajita, queso, guacamole, frijoles charros y pico de gallo en tortilla de harina.</div>
+      </div>
+      <div class="price-pill">$6.99</div>
+    </div>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">Flautas De Pollo (4)</div>
+        <div class="menu-desc">Incluye arroz, guacamole y crema.</div>
+      </div>
+      <div class="price-pill">$9.99</div>
+    </div>
+
+    <!-- HAMBURGUESAS -->
+    <div id="hamburguesas" class="section-banner">
+      <h2>Hamburguesas</h2>
+      <span>Burgers</span>
+    </div>
+    <p class="section-note">*Todas las hamburguesas incluyen papas fritas / All burgers include a side of French fries*</p>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">La Guacamole</div>
+        <div class="menu-desc">Carne 100% de res con queso, jamón y guacamole. (100% beef meat with cheese, ham &amp; guacamole)</div>
+      </div>
+      <div class="price-pill">$11.99</div>
+    </div>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">La Mamalona</div>
+        <div class="menu-desc">Carne 100% de res con queso, jamón, salchicha roja, aguacate y verduras. (100% beef with cheese, ham, red sausage, avocado &amp; vegetables)</div>
+      </div>
+      <div class="price-pill">$12.99</div>
+    </div>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">La Master</div>
+        <div class="menu-desc">Doble carne 100% de res con queso, jamón, aguacate y verduras. (Double meat 100% beef with cheese, ham, avocado &amp; vegetables)</div>
+      </div>
+      <div class="price-pill">$14.99</div>
+    </div>
+
+    <!-- BEBIDAS -->
+    <div id="bebidas" class="section-banner">
+      <h2>Bebidas</h2>
+      <span>Drinks</span>
+    </div>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">Coca Mexicana</div>
+        <div class="menu-en">(MEXICAN COKE)</div>
+      </div>
+      <div class="price-pill">$4.99</div>
+    </div>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">Jarritos</div>
+      </div>
+      <div class="price-pill">$3.99</div>
+    </div>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">Topo Chico</div>
+      </div>
+      <div class="price-pill">$4.99</div>
+    </div>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">Soda De Lata</div>
+        <div class="menu-en">(CAN SODA)</div>
+      </div>
+      <div class="price-pill">$1.99</div>
+    </div>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">Aguas Frescas</div>
+        <div class="menu-en">(FRESH FRUIT DRINKS)</div>
+      </div>
+      <div class="price-pill">$4.99</div>
+    </div>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">Agua Embotellada</div>
+        <div class="menu-en">(BOTTLE WATER)</div>
+      </div>
+      <div class="price-pill">$2.99</div>
+    </div>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">Cerveza Internacional</div>
+        <div class="menu-en">(IMPORTED BEER)</div>
+      </div>
+      <div class="price-pill">$4.99</div>
+    </div>
+
+    <div class="menu-card">
+      <div>
+        <div class="menu-title">Cerveza Doméstica</div>
+        <div class="menu-en">(DOMESTIC BEER)</div>
+      </div>
+      <div class="price-pill">$3.99</div>
+    </div>
+
+    <!-- QR CODE GENERATOR -->
+    <section class="qr-card">
       <h3>📲 Código QR del Menú</h3>
-      <p>Escanea para ver nuestro menú digital o imprime este código para tus mesas.</p>
-      <div id="qr-box">
-        <img id="qr-img" alt="QR Menú Pollos Asados El Rey Del Carbón" width="220" height="220" />
-      </div>
-      <div class="qr-actions">
-        <a id="qr-download" class="btn btn-call" download="QR-Pollos-Asados-El-Rey.png">⬇️ Descargar QR (PNG)</a>
-        <button class="btn btn-map" onclick="window.print()">🖨️ Imprimir Table Tent</button>
+      <p>Escanea con tu celular o imprime este código QR para las mesas del restaurante.</p>
+      <img id="qr-img" alt="Código QR Pollos Asados El Rey Del Carbón" width="220" height="220" />
+      <div class="qr-btns">
+        <a id="qr-download" class="btn-qr" download="QR-Pollos-Asados-El-Rey.png">⬇️ Descargar QR (PNG)</a>
+        <button class="btn-print" onclick="window.print()">🖨️ Imprimir Table Tent</button>
       </div>
     </section>
   </main>
 
   <footer>
-    Pollos Asados El Rey Del Carbón · 2431 Basse Rd, San Antonio, TX 78213 · (210) 943-7490
+    Pollos Asados El Rey Del Carbón • 2431 Basse Rd, San Antonio, TX 78213 • (210) 943-7490
   </footer>
 
   <script>
     (function () {
       const menuUrl = window.location.href.split('#')[0];
-      const qrApi = "https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=" + encodeURIComponent(menuUrl);
+      const qrApi = "https://api.qrserver.com/v1/create-qr-code/?size=450x450&data=" + encodeURIComponent(menuUrl);
       const img = document.getElementById("qr-img");
       const dl = document.getElementById("qr-download");
       img.src = qrApi;
       fetch(qrApi)
-        .then(r => r.blob())
-        .then(blob => { dl.href = URL.createObjectURL(blob); })
-        .catch(() => { dl.href = qrApi; });
+        .then(function (r) { return r.blob(); })
+        .then(function (blob) { dl.href = URL.createObjectURL(blob); })
+        .catch(function () { dl.href = qrApi; });
     })();
   </script>
 </body>
