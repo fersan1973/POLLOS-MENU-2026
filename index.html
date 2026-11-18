@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <title>Pollos Asados El Rey Del Carbón | Menú Digital</title>
   <style>
     :root {
@@ -12,12 +13,15 @@
       --red: #c81d11;
       --red-dark: #8c1109;
       --gold: #facc15;
-      --gold-dark: #eab308;
       --text: #ffffff;
       --muted: #b8b0a8;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background-color: var(--bg);
@@ -30,44 +34,55 @@
     .hero {
       background: radial-gradient(circle at top, #3b100c 0%, #140b09 65%, #0c0a09 100%);
       text-align: center;
-      padding: 28px 16px 22px;
+      padding: 24px 16px 20px;
       border-bottom: 3px solid var(--gold);
     }
     .logo-wrap {
-      width: 144px;
-      height: 144px;
+      width: 156px;
+      height: 156px;
       margin: 0 auto 14px;
       border-radius: 50%;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+      overflow: hidden;
+      border: 3px solid var(--gold);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+      background: #c81d11;
+    }
+    .logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.14);
+      display: block;
     }
     .hero h1 {
       font-family: Impact, "Arial Black", "Segoe UI", sans-serif;
-      font-size: 2.05rem;
+      font-size: clamp(1.65rem, 6.8vw, 2.2rem);
       line-height: 1.08;
       color: var(--gold);
-      letter-spacing: 0.8px;
+      letter-spacing: 0.6px;
       text-transform: uppercase;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+      text-shadow: 0 2px 6px rgba(0,0,0,0.85);
       margin-bottom: 8px;
     }
     .hero-sub {
       font-weight: 800;
-      font-size: 0.92rem;
-      letter-spacing: 1.5px;
+      font-size: 0.88rem;
+      letter-spacing: 1.4px;
       color: #ffffff;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
     .cta-primary {
       display: block;
-      max-width: 440px;
+      width: 100%;
+      max-width: 420px;
       margin: 0 auto 10px;
       background: linear-gradient(180deg, #dc2626 0%, #b91c1c 100%);
       color: #ffffff;
       text-decoration: none;
       font-weight: 900;
-      font-size: 1.05rem;
-      letter-spacing: 0.5px;
-      padding: 14px 18px;
+      font-size: 0.98rem;
+      letter-spacing: 0.4px;
+      padding: 13px 14px;
       border-radius: 10px;
       box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4);
     }
@@ -75,7 +90,8 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
-      max-width: 440px;
+      width: 100%;
+      max-width: 420px;
       margin: 0 auto;
     }
     .cta-gold {
@@ -83,8 +99,8 @@
       color: #111111;
       text-decoration: none;
       font-weight: 900;
-      font-size: 0.85rem;
-      padding: 12px 10px;
+      font-size: 0.82rem;
+      padding: 11px 8px;
       border-radius: 10px;
       display: flex;
       align-items: center;
@@ -98,8 +114,8 @@
       border: 1.5px solid #443c35;
       text-decoration: none;
       font-weight: 800;
-      font-size: 0.85rem;
-      padding: 12px 10px;
+      font-size: 0.82rem;
+      padding: 11px 8px;
       border-radius: 10px;
       display: flex;
       align-items: center;
@@ -111,9 +127,9 @@
     .info-strip {
       background: #13100e;
       text-align: center;
-      padding: 14px 16px;
+      padding: 12px 14px;
       border-bottom: 1px solid var(--surface-border);
-      font-size: 0.86rem;
+      font-size: 0.83rem;
     }
     .info-strip .gold { color: var(--gold); font-weight: 700; }
     .info-strip a { color: #ffffff; text-decoration: underline; }
@@ -129,7 +145,7 @@
       display: flex;
       gap: 8px;
       overflow-x: auto;
-      padding: 12px 14px;
+      padding: 10px 14px;
       border-bottom: 1px solid var(--surface-border);
       scrollbar-width: none;
     }
@@ -141,8 +157,8 @@
       color: #ffffff;
       text-decoration: none;
       font-weight: 700;
-      font-size: 0.85rem;
-      padding: 8px 14px;
+      font-size: 0.83rem;
+      padding: 8px 13px;
       border-radius: 999px;
       white-space: nowrap;
     }
@@ -155,32 +171,32 @@
     main {
       max-width: 680px;
       margin: 0 auto;
-      padding: 8px 14px 20px;
+      padding: 6px 14px 20px;
     }
     .section-banner {
-      margin-top: 24px;
+      margin-top: 22px;
       margin-bottom: 12px;
       background: linear-gradient(90deg, #dc2626 0%, #8c1109 100%);
       border-left: 6px solid var(--gold);
       border-radius: 8px;
-      padding: 12px 16px;
+      padding: 11px 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 10px;
-      scroll-margin-top: 64px;
+      gap: 8px;
+      scroll-margin-top: 60px;
     }
     .section-banner h2 {
       font-family: Impact, "Arial Black", sans-serif;
-      font-size: 1.35rem;
-      letter-spacing: 0.6px;
+      font-size: 1.25rem;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
       color: #ffffff;
     }
     .section-banner span {
       font-weight: 800;
-      font-size: 0.78rem;
-      letter-spacing: 0.8px;
+      font-size: 0.74rem;
+      letter-spacing: 0.6px;
       text-transform: uppercase;
       color: #fde68a;
       white-space: nowrap;
@@ -188,7 +204,7 @@
     .section-note {
       color: var(--gold);
       font-style: italic;
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       margin: -4px 2px 12px;
     }
 
@@ -197,30 +213,30 @@
       background: var(--surface);
       border: 1px solid var(--surface-border);
       border-radius: 12px;
-      padding: 15px 16px;
+      padding: 14px;
       margin-bottom: 10px;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 14px;
+      gap: 12px;
     }
     .menu-title {
       font-weight: 900;
-      font-size: 1.05rem;
+      font-size: 1rem;
       text-transform: uppercase;
       color: #ffffff;
       letter-spacing: 0.3px;
     }
     .menu-en {
       font-weight: 800;
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       color: var(--gold);
       margin-top: 2px;
     }
     .menu-desc {
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       color: var(--muted);
-      margin-top: 6px;
+      margin-top: 5px;
       line-height: 1.4;
     }
     .price-pill {
@@ -228,8 +244,8 @@
       border: 1px solid #3a3128;
       color: var(--gold);
       font-weight: 900;
-      font-size: 1.05rem;
-      padding: 7px 12px;
+      font-size: 0.98rem;
+      padding: 6px 10px;
       border-radius: 8px;
       white-space: nowrap;
       flex-shrink: 0;
@@ -237,23 +253,15 @@
 
     /* QR & PRINT SECTION */
     .qr-card {
-      margin-top: 32px;
+      margin-top: 30px;
       background: var(--surface);
       border: 1.5px solid var(--gold);
       border-radius: 14px;
-      padding: 22px 16px;
+      padding: 20px 14px;
       text-align: center;
     }
-    .qr-card h3 {
-      color: var(--gold);
-      font-size: 1.15rem;
-      margin-bottom: 6px;
-    }
-    .qr-card p {
-      color: var(--muted);
-      font-size: 0.88rem;
-      margin-bottom: 14px;
-    }
+    .qr-card h3 { color: var(--gold); font-size: 1.1rem; margin-bottom: 6px; }
+    .qr-card p { color: var(--muted); font-size: 0.86rem; margin-bottom: 14px; }
     #qr-img {
       background: #ffffff;
       padding: 12px;
@@ -261,19 +269,14 @@
       display: block;
       margin: 0 auto 14px;
     }
-    .qr-btns {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+    .qr-btns { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
     .btn-qr {
       background: var(--gold);
       color: #111111;
       text-decoration: none;
       font-weight: 800;
-      font-size: 0.88rem;
-      padding: 10px 16px;
+      font-size: 0.86rem;
+      padding: 10px 14px;
       border-radius: 8px;
       border: none;
       cursor: pointer;
@@ -283,20 +286,18 @@
       color: #ffffff;
       border: 1px solid #443c35;
       font-weight: 700;
-      font-size: 0.88rem;
-      padding: 10px 16px;
+      font-size: 0.86rem;
+      padding: 10px 14px;
       border-radius: 8px;
       cursor: pointer;
     }
-
     footer {
       text-align: center;
       color: var(--muted);
-      font-size: 0.82rem;
-      margin-top: 26px;
-      padding: 0 16px;
+      font-size: 0.8rem;
+      margin-top: 24px;
+      padding: 0 14px;
     }
-
     @media print {
       body { background: #fff; color: #000; }
       .hero, .info-strip, .nav-pills, main > :not(.qr-card), footer { display: none !important; }
@@ -310,31 +311,7 @@
 
   <header class="hero">
     <div class="logo-wrap">
-      <!-- Crest Logo SVG -->
-      <svg viewBox="0 0 220 220" width="144" height="144" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="110" cy="110" r="106" fill="#181210" stroke="#facc15" stroke-width="5"/>
-        <circle cx="110" cy="110" r="98" fill="#c81d11"/>
-        <circle cx="110" cy="110" r="64" fill="#facc15" stroke="#181210" stroke-width="4"/>
-        <defs>
-          <path id="topArc" d="M 32,110 A 78,78 0 1,1 188,110" />
-          <path id="botArc" d="M 188,112 A 78,78 0 1,1 32,112" />
-        </defs>
-        <text fill="#facc15" font-family="Impact, Arial Black, sans-serif" font-size="18" letter-spacing="1.5">
-          <textPath href="#topArc" startOffset="50%" text-anchor="middle">POLLOS ASADOS</textPath>
-        </text>
-        <text fill="#facc15" font-family="Impact, Arial Black, sans-serif" font-size="16.5" letter-spacing="1.2">
-          <textPath href="#botArc" startOffset="50%" text-anchor="middle">EL REY DEL CARBÓN</textPath>
-        </text>
-        <!-- Stylized Rooster Emblem -->
-        <g transform="translate(62,56)" stroke="#181210" stroke-width="3.5" stroke-linejoin="round">
-          <path d="M36,22 C34,12 42,8 46,15 C50,8 58,10 56,18 C62,15 66,22 60,26 Z" fill="#dc2626"/>
-          <path d="M32,44 C26,34 34,22 48,22 C60,22 66,32 62,44 C72,48 76,62 68,74 C58,84 36,84 28,72 C22,62 24,50 32,44 Z" fill="#facc15"/>
-          <polygon points="28,34 15,38 28,43" fill="#f97316"/>
-          <circle cx="38" cy="34" r="3" fill="#181210"/>
-          <path d="M36,54 C46,50 58,52 64,60 C56,66 44,66 36,54 Z" fill="#f59e0b"/>
-          <path d="M68,52 C78,44 86,50 78,60 C86,62 82,72 72,68 Z" fill="#dc2626"/>
-        </g>
-      </svg>
+      <img src="IMG-20250913-WA0026(7).jpg" alt="Pollos Asados El Rey Del Carbón Logo" />
     </div>
 
     <h1>Pollos Asados El Rey Del Carbón</h1>
@@ -361,7 +338,6 @@
   </nav>
 
   <main>
-    <!-- PARRILLADAS -->
     <div id="parrilladas" class="section-banner">
       <h2>Parrilladas</h2>
       <span>Family Platter</span>
@@ -383,7 +359,6 @@
       <div class="price-pill">$29.99 / $34.98</div>
     </div>
 
-    <!-- POLLITO Y CARNITA ASADA -->
     <div id="pollito" class="section-banner">
       <h2>Pollito y Carnita Asada</h2>
       <span>Al Carbón</span>
@@ -445,7 +420,6 @@
       <div class="price-pill">$16.99</div>
     </div>
 
-    <!-- PAQUETES PERSONALES -->
     <div id="paquetes" class="section-banner">
       <h2>Paquetes Personales</h2>
       <span>Individual Combos</span>
@@ -499,7 +473,6 @@
       <div class="price-pill">$9.99</div>
     </div>
 
-    <!-- HAMBURGUESAS -->
     <div id="hamburguesas" class="section-banner">
       <h2>Hamburguesas</h2>
       <span>Burgers</span>
@@ -530,7 +503,6 @@
       <div class="price-pill">$14.99</div>
     </div>
 
-    <!-- BEBIDAS -->
     <div id="bebidas" class="section-banner">
       <h2>Bebidas</h2>
       <span>Drinks</span>
@@ -598,7 +570,6 @@
       <div class="price-pill">$3.99</div>
     </div>
 
-    <!-- QR CODE GENERATOR -->
     <section class="qr-card">
       <h3>📲 Código QR del Menú</h3>
       <p>Escanea con tu celular o imprime este código QR para las mesas del restaurante.</p>
